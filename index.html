@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>给叶子的道歉</title>
+<style>
+body{margin:0;height:100vh;display:flex;align-items:center;justify-content:center;background:#120022;color:white;font-family:sans-serif;overflow:hidden;}
+.box{text-align:center;background:rgba(255,255,255,.1);padding:30px;border-radius:20px;}
+button{border:none;border-radius:30px;padding:12px 24px;font-size:18px;font-weight:bold;cursor:pointer;}
+#yes{background:#4ade80;}
+#no{background:#f87171;position:absolute;}
+canvas{position:fixed;inset:0;pointer-events:none;}
+.heart{position:fixed;font-size:20px;}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+<div class="box">
+<h2>叶子，对不起。</h2>
+<p>我知道你很失望，但我不想失去你。</p>
+<button id="yes">原谅</button>
+<button id="no">不原谅</button>
+</div>
+<script>
+const no=document.getElementById('no');
+no.onmouseover=()=>{no.style.left=Math.random()*80+'vw';no.style.top=Math.random()*80+'vh';};
+document.getElementById('yes').onclick=()=>{
+ for(let i=0;i<80;i++){
+  const h=document.createElement('div');
+  h.className='heart';h.innerHTML='💗';
+  h.style.left=Math.random()*100+'vw';
+  h.style.top='100vh';
+  document.body.appendChild(h);
+  h.animate([{transform:'translateY(0)'},{transform:'translateY(-110vh)'}],{duration:3000});
+ }
+};
+</script>
+</body>
+</html>
